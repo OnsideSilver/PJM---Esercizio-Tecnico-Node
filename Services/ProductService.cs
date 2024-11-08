@@ -39,7 +39,7 @@ namespace Node_ApiService_Test.Services
             }
         }
 
-        // Create a new product with emulated transaction
+        // Create a new product
         public override ProductDto Create(ProductDto dto)
         {
             using (var scope = new TransactionScope())
@@ -63,7 +63,7 @@ namespace Node_ApiService_Test.Services
             }
         }
 
-        // Read product by ID
+        // Read a product by ID
         public override ProductDto ReadId(Guid id)
         {
             try
@@ -78,7 +78,7 @@ namespace Node_ApiService_Test.Services
             }
         }
 
-        // Read product by Name
+        // Read a product by Name
         public override ProductDto ReadName(string name)
         {
             try
@@ -94,7 +94,7 @@ namespace Node_ApiService_Test.Services
             }
         }
 
-        // Update product
+        // Update a product
         public override ProductDto Update(Guid id, ProductDto dto)
         {
             try
@@ -114,7 +114,7 @@ namespace Node_ApiService_Test.Services
             }
         }
 
-        // Delete a product by ID with emulated transaction
+        // Delete a product by ID
         public override bool DeleteId(Guid id)
         {
             using (var scope = new TransactionScope())
@@ -137,7 +137,7 @@ namespace Node_ApiService_Test.Services
             }
         }
 
-        // Delete a product by Name with emulated transaction
+        // Delete a product by Name
         public override bool DeleteName(string name)
         {
             using (var scope = new TransactionScope())

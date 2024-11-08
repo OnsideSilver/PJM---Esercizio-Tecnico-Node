@@ -17,17 +17,17 @@ namespace Node_ApiService_Test.Controllers
             _userService = userService;
         }
 
-        // GET All Users
+        // GET all users
         [HttpGet("all")]
         public ActionResult<IEnumerable<UserDto>> GetUsers()
         {
-            var user = _userService.GetAllUsers();
-            return Ok(user); // Return the list of users
+            var user = _userService.GetAllUsers(); // Get all users from the service
+            return Ok(user);
         }
 
-        // GET an User
+        // GET an user
         [HttpGet]
-        public ActionResult<UserDto> GetUser([FromQuery] Guid? id, [FromQuery] string name)
+        public ActionResult<UserDto> GetUser([FromQuery] Guid? id, [FromQuery] string? name)
         {
             UserDto user = null;
 
@@ -43,13 +43,13 @@ namespace Node_ApiService_Test.Controllers
 
             if (user == null)
             {
-                return this.NotFoundWithUsers(_userService.GetAllUsers()); // Return list of products if none is found
+                return this.NotFoundWithUsers(_userService.GetAllUsers());
             }
 
             return Ok(user);
         }
 
-        // POST a new User
+        // POST a new user
         [HttpPost("{name}/{email}")]
         public ActionResult<UserDto> CreateUser(string name, string email)
         {
@@ -76,16 +76,17 @@ namespace Node_ApiService_Test.Controllers
             {
                 return this.NotFoundWithUsers(_userService.GetAllUsers());
             }
-            return Ok(_userService.GetAllUsers());
+            return Ok(user);
         }
 
-        // DELETE an User
+        // DELETE an user
         [HttpDelete]
         public ActionResult DeleteUser([FromQuery] Guid? id, [FromQuery] string? name)
         {
+            // If both ID and Name are provided, prioritize ID
             if (!id.HasValue && string.IsNullOrEmpty(name))
             {
-                return BadRequest("Provide either an Id or a Name.");
+                return this.NotFoundWithUsers(_userService.GetAllUsers());
             }
 
             else if (id.HasValue && !string.IsNullOrEmpty(name) || id.HasValue && string.IsNullOrEmpty(name))
@@ -93,7 +94,7 @@ namespace Node_ApiService_Test.Controllers
                 bool deleted = _userService.DeleteId(id.Value);
                 if (!deleted)
                 {
-                    return NotFound("User could not be deleted by Id.");
+                    return this.NotFoundWithUsers(_userService.GetAllUsers());
                 }
                 return Ok(new { message = "User successfully deleted. N.B: in the case you have filled both Id and Name of 2 different users, only the user associated with the id has been deleted." });
             }
@@ -103,7 +104,7 @@ namespace Node_ApiService_Test.Controllers
                 bool deleted = _userService.DeleteName(name);
                 if (!deleted)
                 {
-                    return NotFound("User could not be deleted by name.");
+                    return this.NotFoundWithUsers(_userService.GetAllUsers());
                 }
                 return Ok(new { message = "User successfully deleted." });
             }

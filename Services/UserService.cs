@@ -70,7 +70,7 @@ namespace Node_ApiService_Test.Services
             }
         }
 
-        // Read product by ID
+        // Read an user by ID
         public override UserDto ReadId(Guid id)
         {
             try
@@ -85,7 +85,7 @@ namespace Node_ApiService_Test.Services
             }
         }
 
-        // Read product by Name
+        // Read an user by Name
         public override UserDto ReadName(string name)
         {
             try
@@ -102,7 +102,7 @@ namespace Node_ApiService_Test.Services
             }
         }
 
-        // Update product
+        // Update an user
         public override UserDto Update(Guid id, UserDto dto)
         {
             try
@@ -124,7 +124,7 @@ namespace Node_ApiService_Test.Services
             }
         }
 
-        // Delete an user by ID with emulated transaction
+        // Delete an user by ID
         public override bool DeleteId(Guid id)
         {
             using (var scope = new TransactionScope())
@@ -147,7 +147,7 @@ namespace Node_ApiService_Test.Services
             }
         }
 
-        // Delete a product by Name with emulated transaction
+        // Delete an user by Name
         public override bool DeleteName(string name)
         {
             using (var scope = new TransactionScope())
