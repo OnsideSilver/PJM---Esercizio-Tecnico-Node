@@ -26,7 +26,7 @@ namespace Node_ApiService_Test.Controllers
         }
 
         // GET a product
-        [HttpGet]
+        [HttpGet("id or name")]
         public ActionResult<ProductDto> GetProduct([FromQuery] Guid? id, [FromQuery] string? name)
         {
             ProductDto product = null;
@@ -76,7 +76,7 @@ namespace Node_ApiService_Test.Controllers
         }
 
         // DELETE a product
-        [HttpDelete]
+        [HttpDelete("id or name")]
         public ActionResult DeleteProduct([FromQuery] Guid? id, [FromQuery] string? name)
         {
             // If both ID and Name are provided, prioritize ID

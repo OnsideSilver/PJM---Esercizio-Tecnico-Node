@@ -26,7 +26,7 @@ namespace Node_ApiService_Test.Controllers
         }
 
         // GET an user
-        [HttpGet]
+        [HttpGet("id or name")]
         public ActionResult<UserDto> GetUser([FromQuery] Guid? id, [FromQuery] string? name)
         {
             UserDto user = null;
@@ -71,7 +71,7 @@ namespace Node_ApiService_Test.Controllers
         [HttpPut("{id}")]
         public ActionResult UpdateUser(Guid id, UserDto userDto)
         {
-            var message = "Something went wrong. Verify if the ID is present in this list and the mail follows this format: example@domain.com.";
+            var message = "Something went wrong. Verify if the ID is present in this list and the mail follows this format: example@domain.com";
             var user = _userService.Update(id, userDto);
             if (user == null)
             {
@@ -81,7 +81,7 @@ namespace Node_ApiService_Test.Controllers
         }
 
         // DELETE an user
-        [HttpDelete]
+        [HttpDelete ("id or name")]
         public ActionResult DeleteUser([FromQuery] Guid? id, [FromQuery] string? name)
         {
             // If both ID and Name are provided, prioritize ID
