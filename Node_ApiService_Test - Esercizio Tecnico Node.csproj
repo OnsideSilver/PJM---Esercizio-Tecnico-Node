@@ -15,7 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Utilities\Docs\" />
+    <Folder Include="Docs\" />
   </ItemGroup>
 
 </Project>
