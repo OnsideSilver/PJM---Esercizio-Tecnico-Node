@@ -3,6 +3,14 @@
 Welcome to the API UserManual for the **Service**. This service allows you to interact with mock **data**. Below is an overview of the available endpoints.
 
 ## Endpoints
+
+### POST /api/Auth/login
+- **Description**: Generates a JWT token to insert for authorization.
+
+-  **Notes**: 
+    - This endpoint returns a token, username and password are "string" (you can just press execute and the token will be generated).
+    - - **NB: To use the token you need to generate it, copy it, click on the Authorize button (top right corner) and paste the string.**
+    
 ### GET /api/xxx/all
 - **Description**: Retrieve all items from the list.
 
@@ -25,6 +33,7 @@ Welcome to the API UserManual for the **Service**. This service allows you to in
 
 - **Notes**: 
     - This endpoint deletes a single item based on their unique `id` or unique `name`.
+    - - **NB: You need to be authenticated or you will get an error 401.**
     - If the item is not found, the entire list will appear with the prompt to pick someone from it.
 
     

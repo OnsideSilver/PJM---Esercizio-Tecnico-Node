@@ -2,6 +2,7 @@
 using Node_ApiService_Test.DTOs;
 using Node_ApiService_Test.Services;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Node_ApiService_Test.Controllers
 {
@@ -82,6 +83,7 @@ namespace Node_ApiService_Test.Controllers
 
         // DELETE an user
         [HttpDelete ("id or name")]
+        [Authorize] //Requires Authentication (check the README for more info)
         public ActionResult DeleteUser([FromQuery] Guid? id, [FromQuery] string? name)
         {
             // If both ID and Name are provided, prioritize ID
