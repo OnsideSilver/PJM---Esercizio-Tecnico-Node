@@ -71,10 +71,11 @@ namespace Node_ApiService_Test.Controllers
         [HttpPut("{id}")]
         public ActionResult UpdateUser(Guid id, UserDto userDto)
         {
+            var message = "Something went wrong. Verify if the ID is present in this list and the mail follows this format: example@domain.com.";
             var user = _userService.Update(id, userDto);
             if (user == null)
             {
-                return this.NotFoundWithUsers(_userService.GetAllUsers());
+                return NotFound(new { message, users = _userService.GetAllUsers() });
             }
             return Ok(user);
         }
