@@ -1,0 +1,6 @@
+@Node_ApiService_Test___Esercizio_Tecnico_Node_HostAddress = http://localhost:5027
+
+GET {{Node_ApiService_Test___Esercizio_Tecnico_Node_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
